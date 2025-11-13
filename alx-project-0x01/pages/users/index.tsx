@@ -1,21 +1,36 @@
 import UserCard from '@/components/common/UserCard'
+import Footer from '@/components/layout/Footer'
 import Header from '@/components/layout/Header'
-import { UserProps } from '@/interfaces'
+import { useState } from 'react'
+import UserModal from '@/components/common/UserModal'
+import { UserData } from '@/interfaces'
 
-const Users: React.FC<{ posts: UserProps[] }> = ({ posts }) => {
-    console.log(posts)
+const Users: React.FC<{ posts: UserData[] }> = ({ posts }) => {
+    const [isModalOpen, setModalOpen] = useState(false);
+    const [users, setUsers] = useState<UserData[]>(posts);
+    // console.log(posts)
+
+    const handleAddUser = (newUser: UserData) => {
+        setUsers((prevUser) => [...prevUser, newUser]);
+    }
     return (
-        <div className='flex flex-col h-screen'>
+        <div className='flex flex-col bg-linear-to-l from-gray-600 to-blue-500'>
             <Header />
-            <main className='grid grid-cols-2 m-auto gap-2'>
+            <div className='flex justify-end-safe m-5'>
+                <button onClick={() => setModalOpen(true)} className=" bg-linear-to-r from-gray-600 to-purple-500 font-semibold w-fit px-4 py-2 rounded-lg text-gray-200">Add User</button>
+            </div>
+            <main className='grid grid-cols-2 m-auto py-10 gap-5'>
                 {
-                    posts.map(({ id, name, username } : UserProps) => (
-                        <UserCard key={id} id={id} name={name} username={username} />
+                    users.map(({ userId, name, username, email }: UserData) => (
+                        <UserCard key={userId} id={userId} name={name} email={email} username={username} />
                     ))
                 }
             </main>
+            {isModalOpen && (
+                <UserModal onClose={() => setModalOpen(false)} onSubmit={handleAddUser} />
+            )}
+            <Footer />
         </div>
-
     )
 }
 
