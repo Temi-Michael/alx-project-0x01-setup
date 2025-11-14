@@ -21,7 +21,7 @@ const Users: React.FC<{ posts: UserData[] }> = ({ posts }) => {
             </div>
             <main className='grid grid-cols-2 m-auto py-10 gap-5'>
                 {
-                    users.map(({ userId, name, username, email }: UserData) => (
+                    posts.map(({ userId, name, username, email }: UserData) => (
                         <UserCard key={userId} id={userId} name={name} email={email} username={username} />
                     ))
                 }
