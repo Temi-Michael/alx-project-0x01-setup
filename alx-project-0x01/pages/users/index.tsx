@@ -12,6 +12,7 @@ const Users: React.FC<{ posts: UserData[] }> = ({ posts }) => {
 
     const handleAddUser = (newUser: UserData) => {
         setUsers((prevUser) => [...prevUser, newUser]);
+
     }
     return (
         <div className='flex flex-col bg-linear-to-l from-gray-600 to-blue-500'>
