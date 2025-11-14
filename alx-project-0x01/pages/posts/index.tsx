@@ -3,10 +3,11 @@ import PostModal from "@/components/common/PostModal";
 import Header from "@/components/layout/Header";
 import { PostProps } from "@/interfaces";
 import { useState } from "react";
+import { PostData } from "@/interfaces";
 
 const Posts: React.FC<{ posts: PostProps[] }> = ({ posts }) => {
     const [isModalOpen, setModalOpen] = useState(false);
-    const [post, setPost] = useState<PostProps | null>(null);
+    const [post, setPost] = useState<PostData | null>(null);
 
 
 
