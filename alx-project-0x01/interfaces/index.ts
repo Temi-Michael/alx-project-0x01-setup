@@ -43,9 +43,9 @@ export interface UserData {
   image: string;
 }
 
-export interface UserModalProps extends UserProps {
+export interface UserModalProps {
   onClose: () => void;
-  onSubmit: (user: UserProps) => void;
+  onSubmit: (post: UserProps) => void;
 }
 
 export interface ButtonProps {
