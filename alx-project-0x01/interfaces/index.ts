@@ -16,7 +16,7 @@ export interface UserProps {
   // company: Company;
 }
 
-export interface Address extends UserProps {
+export interface Address {
   street: string;
   suite?: string;
   city: string;
